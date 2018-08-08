@@ -4,6 +4,11 @@ import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
 import org.junit.Test;
 
+/**
+ * @author Alex Konotop (mailto:a.konotop@gmail.com)
+ * @version $Id$
+ * @since 0.1
+ */
 
 public class TestTracker {
 
