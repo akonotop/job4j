@@ -6,8 +6,9 @@ package ru.job4j.array;
  * @since 0.1
  */
 
-public class TwoArrays {public static int[] twoArrays(int[] first, int[] second) {
-    // при соиденение  двух отсортированных массивов first и second получаем новый отсортированный newOne
+public class TwoArrays {
+    public static int[] twoArrays(int[] first, int[] second) {
+        // при соединение двух отсортированных массивов first и second получаем новый отсортированный newOne
     int[] newOne = new int[first.length + second.length];
     int firstIndex = 0;
     int secondIndex = 0;
