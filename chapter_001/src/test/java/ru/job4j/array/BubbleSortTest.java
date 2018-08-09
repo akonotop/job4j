@@ -8,9 +8,6 @@ package ru.job4j.array;
 
 import org.hamcrest.Matchers;
 import org.junit.Test;
-
-import java.lang.reflect.Array;
-
 import static org.junit.Assert.assertThat;
 
 public class BubbleSortTest {
