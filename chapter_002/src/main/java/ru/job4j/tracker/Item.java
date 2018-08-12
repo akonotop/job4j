@@ -15,11 +15,23 @@ public class Item {
     private long created;
 
     public Item() {
+    }
 
+    public Item(String name, String desc, Long created) {
+        this.name = name;
+        this.desc = desc;
+        this.created = created;
+    }
+    public Item(String name, String desc) {
+        this.name = name;
+        this.desc = desc;
     }
 
     public String getId() {
         return id;
+    }
+    public String getDesc() {
+        return desc;
     }
 
     public void setId(String id) {
@@ -27,42 +39,6 @@ public class Item {
     }
 
     public String getName() {
-        return  this.name;
+        return name;
     }
-
-    public void setName (String id) {
-        this.name = name;
-    }
-
-    public  String getDesc() {
-        return this.desc;
-    }
-
-    public void setDesc(String desc) {
-        this.desc = desc;
-    }
-
-    public  String getComment() {
-        return this.comment;
-    }
-
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
-
-    public Item(String name, String desc, long created) {
-       this.name = name;
-       this.desc = desc;
-       this.created = created;
-    }
-
-    public  long getCreated() {
-        return this.created;
-    }
-
-    public void setCreated(){
-        this.created = created;
-    }
-
-
 }
