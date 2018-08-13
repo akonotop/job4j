@@ -1,10 +1,10 @@
-package ru.job4j.Professions;
+package ru.job4j.professions;
 
 public class Profession {
     public String name;
     public String profession;
 
-    public Profession(){
+    public Profession() {
 
     }
 
@@ -16,8 +16,8 @@ public class Profession {
     public String getName() {
         return this.name;
     }
+
     public String getDescription() {
         return this.profession;
     }
-
 }
