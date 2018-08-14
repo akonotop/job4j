@@ -15,6 +15,9 @@ public class Abcd {
     if (b < c) {
         return false;
     }
+    if (d < a){
+        return false;
+    }
     return true;
     }
 }
