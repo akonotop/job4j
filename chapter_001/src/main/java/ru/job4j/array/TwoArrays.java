@@ -10,20 +10,25 @@ public class TwoArrays {
     public static int[] twoArrays(int[] first, int[] second) {
         // при соединение двух отсортированных массивов first и second получаем новый отсортированный newOne
     int[] newOne = new int[first.length + second.length];
-    int firstIndex = 0;
-    int secondIndex = 0;
+        int i = 0, j = 0, k = 0;
 
-    for (int i = 0; i < newOne.length; i++){
-        newOne[i] = first[firstIndex] < second[secondIndex] ? first[firstIndex++] : second[secondIndex++];
-        if (firstIndex == first.length) {
-            System.arraycopy(second, secondIndex, newOne, ++i, second.length - secondIndex);
-            break;
+        while( i < first.length && j < second.length) {
+            if(first[i] < second[j]) {
+                newOne[k] = first[i];
+                i++;
+                k++;
+            } else {
+                newOne[k] = second[j];
+                j++;
+                k++;
+            }
         }
-        if (secondIndex == second.length) {
-            System.arraycopy(first, firstIndex, newOne, ++i, first.length - firstIndex);
-            break;
+        while (i < first.length) {
+            newOne[k++] = first[i++];
         }
-    }
+        while (j < second.length) {
+            newOne[k++] = second[j++];
+        }
     return newOne;
-}
+    }
 }

@@ -12,19 +12,19 @@ import static org.junit.Assert.assertThat;
 
 public class AbcdTest {
     @Test
-    public void whenABleftAndNotCrossing()  {
+    public void whenABleftAndNotCrossing() {
         Abcd crossing = new Abcd();
         boolean result = crossing.abcd(1, 2, 3, 4);
         assertThat(result, is(false));
     }
     @Test
-    public void whenCDleftAndNotCrossing()  {
+    public void whenCDleftAndNotCrossing() {
         Abcd crossing = new Abcd();
         boolean result = crossing.abcd(3, 4, 1, 2);
         assertThat(result, is(false));
     }
     @Test
-    public void whenCDisCrossingAB()  {
+    public void whenCDisCrossingAB() {
         Abcd crossing = new Abcd();
         boolean result = crossing.abcd(3, 5, 1, 4);
         assertThat(result, is(true));
