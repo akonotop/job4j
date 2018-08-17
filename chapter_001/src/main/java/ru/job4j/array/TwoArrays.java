@@ -8,27 +8,25 @@ package ru.job4j.array;
 
 public class TwoArrays {
     public static int[] twoArrays(int[] first, int[] second) {
-        // при соединение двух отсортированных массивов first и second получаем новый отсортированный newOne
     int[] newOne = new int[first.length + second.length];
-        int i = 0, j = 0, k = 0;
-
-        while( i < first.length && j < second.length) {
-            if(first[i] < second[j]) {
-                newOne[k] = first[i];
-                i++;
-                k++;
-            } else {
-                newOne[k] = second[j];
-                j++;
-                k++;
-            }
+    int i = 0, j = 0, k = 0;
+    while( i < first.length && j < second.length) {
+        if(first[i] < second[j]) {
+            newOne[k] = first[i];
+            i++;
+            k++;
+        } else {
+            newOne[k] = second[j];
+            j++;
+            k++;
         }
-        while (i < first.length) {
-            newOne[k++] = first[i++];
-        }
-        while (j < second.length) {
-            newOne[k++] = second[j++];
-        }
+    }
+    while (i < first.length) {
+        newOne[k++] = first[i++];
+    }
+    while (j < second.length) {
+        newOne[k++] = second[j++];
+    }
     return newOne;
     }
 }
