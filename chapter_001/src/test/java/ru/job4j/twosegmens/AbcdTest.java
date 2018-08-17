@@ -24,9 +24,21 @@ public class AbcdTest {
         assertThat(result, is(false));
     }
     @Test
-    public void whenCDisCrossingAB() {
+    public void whenCDisCrossingABfromLeft() {
         Abcd crossing = new Abcd();
         boolean result = crossing.abcd(3, 5, 1, 4);
+        assertThat(result, is(true));
+    }
+    @Test
+    public void whenCDisCrossingABfromRight() {
+        Abcd crossing = new Abcd();
+        boolean result = crossing.abcd(3, 5, 4, 8);
+        assertThat(result, is(true));
+    }
+    @Test
+    public void whenCDisInsideAB() {
+        Abcd crossing = new Abcd();
+        boolean result = crossing.abcd(1, 10, 3, 8);
         assertThat(result, is(true));
     }
 }
