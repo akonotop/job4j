@@ -11,10 +11,11 @@ public class StartUI {
      * Константа меню для добавления новой заявки.
      */
     private static final String ADD = "0";
-
-    /**
-     * Константа для выхода из цикла.
-     */
+    private static final String EDIT = "1";
+    private static final String ALL = "2";
+    private static final String DELETE = "3";
+    private static final String ID = "4";
+    private static final String NAME = "5";
     private static final String EXIT = "6";
     /**
      * Получение данных от пользователя.
@@ -44,20 +45,19 @@ public class StartUI {
         while (!exit) {
             this.showMenu();
             String answer = this.input.ask("Введите пункт меню : ");
-            if (ADD.equals(answer)) {
-                //добавление заявки вынесено в отдельный метод.
+            if (ADD.equals("0")) {
                 this.createItem();
-            } else if (answer.equals("1")) {
-                this.showItems();
-            } else if (answer.equals("2")) {
+            } else if (EDIT.equals("1")) {
                 this.editItems();
-            } else if (answer.equals("3")) {
+            } else if (ALL.equals("2")) {
+                this.findAllItems();
+            } else if (DELETE.equals("3")) {
                 this.deleteItems();
-            } else if (answer.equals("4")) {
+            } else if (ID.equals("4")) {
                 this.findItemsById();
-            } else if (answer.equals("5")) {
+            } else if (NAME.equals("5")) {
                 this.findItemsByName();
-            } else if (EXIT.equals(answer)) {
+            } else if (EXIT.equals("6")) {
                 exit = true;
             }
         }
@@ -74,6 +74,8 @@ public class StartUI {
         this.tracker.add(item);
         System.out.println("------------ Новая заявка с getId : " + item.getId() + "-----------");
     }
+
+
 
     private void showMenu() {
         System.out.println("Меню.");
