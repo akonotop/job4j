@@ -28,7 +28,7 @@ public class Item {
     }
 
     public String getId() {
-        return id;
+        return this.id;
     }
     public String getDesc() {
         return desc;
@@ -40,5 +40,10 @@ public class Item {
 
     public String getName() {
         return name;
+    }
+
+    public String getStringItem() {
+        String result =this.id + this.name + this.desc + this.created;
+        return result;
     }
 }

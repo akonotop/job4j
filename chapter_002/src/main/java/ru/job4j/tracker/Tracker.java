@@ -56,14 +56,17 @@ public class Tracker {
         return result;
     }
 
-    public void delete(String id) {
+    public boolean delete(String id) {
+        boolean result = false;
         for (int index = 0; index < this.position; index++) {
             if (this.items[index].getId().equals(id)) {
                 System.arraycopy(this.items, index + 1, this.items, index, this.position - index);
                 this.position--;
+                result = true;
                 break;
             }
         }
+        return result;
     }
 
 

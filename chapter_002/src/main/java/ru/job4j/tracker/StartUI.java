@@ -45,19 +45,19 @@ public class StartUI {
         while (!exit) {
             this.showMenu();
             String answer = this.input.ask("Введите пункт меню : ");
-            if (ADD.equals("0")) {
+            if (ADD.equals(answer)) {
                 this.createItem();
-            } else if (EDIT.equals("1")) {
+            } else if (EDIT.equals(answer)) {
                 this.editItems();
-            } else if (ALL.equals("2")) {
+            } else if (ALL.equals(answer)) {
                 this.findAllItems();
-            } else if (DELETE.equals("3")) {
+            } else if (DELETE.equals(answer)) {
                 this.deleteItems();
-            } else if (ID.equals("4")) {
+            } else if (ID.equals(answer)) {
                 this.findItemsById();
-            } else if (NAME.equals("5")) {
+            } else if (NAME.equals(answer)) {
                 this.findItemsByName();
-            } else if (EXIT.equals("6")) {
+            } else if (EXIT.equals(answer)) {
                 exit = true;
             }
         }
@@ -77,79 +77,65 @@ public class StartUI {
      * Метод редактирует заявки
      */
     private void editItems() {
-        Item[] result = this.tracker.findAll();
-        String answer = this.input.ask("Введите id: ");
-        for (Item item : result) {
-            if (answer.equals(item.getId())) {
-                String name = this.input.ask("Введите новое имя заявки: ");
-                String desc = this.input.ask("Введите новое описание заявки: ");
-                Item itemUser = new Item(name, desc);
-                tracker.replace(answer, itemUser);
-                break;
+        String id = this.input.ask("Введите ID: ");
+        String name = this.input.ask("Введите новое имя заявки: ");
+        String desc = this.input.ask("Введите новое описание заявки: ");
+        Item item = new Item(name, desc);
+            if (tracker.replace(id, item)) {
+                System.out.println("Заявка Обновлена");
             } else {
-                System.out.println("id введен не верный. Введите коректныый id");
+                System.out.println("ID введен не верный. Введите коректныый ID");
             }
-        }
     }
     /**
      * Метод находит все заявки
      */
     private void findAllItems() {
-        Item[] result = this.tracker.findAll();
-        for (Item item : result) {
-            System.out.println(item.getName() + ", " + item.getDesc() + ", " + item.getId());
+        for (int i = 0; i < this.tracker.findAll().length; i++) {
+            System.out.println(this.tracker.findAll()[i].getStringItem());
         }
     }
     /**
      * Метод удаляет заявки
      */
     private void deleteItems() {
-        String answer = this.input.ask("Ведите id: ");
-        Item[] result = this.tracker.findAll();
-        for (Item item : result) {
-            if (answer.equals(item.getId())) {
-                this.tracker.delete(item.getId());
-                break;
-            } else {
-                System.out.println("id введен не верный. Введите коректный id");
-            }
+        System.out.println("------------ Удаление заявки --------------");
+        String id = this.input.ask("Введите ID заявки :");
+        if (tracker.delete(id)) {
+            System.out.println("------------ Заявка с  ID : " + id + " удалена-----------");
+        } else {
+            System.out.println("Заявки с ID:" + id + " не существует");
         }
     }
     /**
      * Метод находит заявки по id
      */
     private void findItemsById() {
-        String answer = this.input.ask("Введите свой id: ");
-        Item[] result = this.tracker.findAll();
-        for (Item item : result) {
-            if (answer.equals(item.getId())) {
-                System.out.println("Ваша заявка: " + item.getName() + ", " + item.getDesc() + ", " + item.getId());
-                break;
-            } else {
-                System.out.println("id введен не верно. Введите коректрый id");
-            }
+        String id = this.input.ask("Введите ID заявки: ");
+        if (this.tracker.findById(id) != null) {
+            System.out.println(this.tracker.findById(id).getStringItem());
+        } else {
+            System.out.println("Заявки с ID:" + id + " не существует");
         }
     }
     /**
      * Метод находит заявки по имени
      */
     private void findItemsByName() {
-        Item[] result = this.tracker.findAll();
-        String answer = this.input.ask("Введите своё имя: ");
-        for (Item item : result) {
-            if (answer.equals(item.getName())) {
-                System.out.println("Ваша заявка: " + item.getName() + ", " + item.getDesc() + ", " + item.getId());
-                break;
-            } else {
-                System.out.println("Имя введено не верно. Введите коректно своё имя");
-            }
+        String name = this.input.ask("Введите имя заявки: ");
+        if (this.tracker.findByName(name).length != 0) {
+            for (int i = 0; i < this.tracker.findByName(name).length; i++)
+                System.out.println(this.tracker.findByName(name)[i].getStringItem());
+        } else {
+            System.out.println("Заявок с таким именем не найдено");
         }
+
     }
     private void showMenu() {
         System.out.println( "Меню." );
         System.out.println( "0. Добавить новый элемент" );
-        System.out.println( "1. Показать все элементы" );
-        System.out.println( "2. Редактировать элемент" );
+        System.out.println( "1. Редактировать элемент" );
+        System.out.println( "2. Показать все элементы" );
         System.out.println( "3. Удалить элементы" );
         System.out.println( "4. Найти элемент по id" );
         System.out.println( "5. Поиск элемента по имени" );
