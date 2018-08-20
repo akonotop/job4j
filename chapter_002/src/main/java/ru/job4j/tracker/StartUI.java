@@ -1,5 +1,7 @@
 package ru.job4j.tracker;
 
+import java.sql.SQLOutput;
+
 /**
  * @author Alex Konotop (mailto:a.konotop@gmail.com)
  * @version $Id$
@@ -77,23 +79,22 @@ public class StartUI {
      * Метод редактирует заявки
      */
     private void editItems() {
-        String id = this.input.ask("Введите ID: ");
+        String id = this.input.ask("Введите id: ");
         String name = this.input.ask("Введите новое имя заявки: ");
         String desc = this.input.ask("Введите новое описание заявки: ");
         Item item = new Item(name, desc);
-            if (tracker.replace(id, item)) {
-                System.out.println("Заявка Обновлена");
-            } else {
-                System.out.println("ID введен не верный. Введите коректныый ID");
-            }
+        if (tracker.replace(id, item)) {
+            System.out.println("Заявка обновлена");
+        } else {
+            System.out.println("id введен не верный. Введите коректныый id");
+        }
     }
     /**
      * Метод находит все заявки
      */
     private void findAllItems() {
-        for (int i = 0; i < this.tracker.findAll().length; i++) {
-            System.out.println(this.tracker.findAll()[i].getStringItem());
-        }
+        System.out.println("------------ Список всех заявок------------ ");
+        System.out.println(this.tracker.findAll());
     }
     /**
      * Метод удаляет заявки
@@ -111,25 +112,17 @@ public class StartUI {
      * Метод находит заявки по id
      */
     private void findItemsById() {
-        String id = this.input.ask("Введите ID заявки: ");
-        if (this.tracker.findById(id) != null) {
-            System.out.println(this.tracker.findById(id).getStringItem());
-        } else {
-            System.out.println("Заявки с ID:" + id + " не существует");
-        }
+        System.out.println("------------ Поиск заявки по ID------------ ");
+        String id = this.input.ask( "Введите ID заявки: " );
+        System.out.println(this.tracker.findById(id));
     }
     /**
      * Метод находит заявки по имени
      */
     private void findItemsByName() {
+        System.out.println("------------ Поиск заявки по имени------------ ");
         String name = this.input.ask("Введите имя заявки: ");
-        if (this.tracker.findByName(name).length != 0) {
-            for (int i = 0; i < this.tracker.findByName(name).length; i++)
-                System.out.println(this.tracker.findByName(name)[i].getStringItem());
-        } else {
-            System.out.println("Заявок с таким именем не найдено");
-        }
-
+        System.out.println(this.tracker.findByName(name));
     }
     private void showMenu() {
         System.out.println( "Меню." );

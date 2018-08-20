@@ -1,21 +1,15 @@
 package ru.job4j.tracker;
-
 /**
  * @author Alex Konotop (mailto:a.konotop@gmail.com)
  * @version $Id$
  * @since 0.1
  */
-
 public class Item {
 
     private String id;
     private String name;
     private String desc;
-    private String comment;
     private long created;
-
-    public Item() {
-    }
 
     public Item(String name, String desc, Long created) {
         this.name = name;
@@ -27,15 +21,27 @@ public class Item {
         this.desc = desc;
     }
 
-    public String getId() {
-        return this.id;
+
+
+    @Override
+    public String toString() {
+        return "Item{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", desc='" + desc + '\'' +
+                '}';
     }
+
     public String getDesc() {
         return desc;
     }
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getId() {
+        return id;
     }
 
     public String getName() {
