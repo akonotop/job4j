@@ -94,7 +94,10 @@ public class StartUI {
      */
     private void findAllItems() {
         System.out.println("------------ Список всех заявок------------ ");
-        System.out.println(this.tracker.findAll());
+        Item[] items = tracker.findAll();
+        for (Item item : items) {
+            System.out.println( item.toString() );
+        }
     }
     /**
      * Метод удаляет заявки
@@ -114,7 +117,12 @@ public class StartUI {
     private void findItemsById() {
         System.out.println("------------ Поиск заявки по ID------------ ");
         String id = this.input.ask( "Введите ID заявки: " );
-        System.out.println(this.tracker.findById(id));
+        Item item = tracker.findById(id);
+        if (item != null) {
+            System.out.println(item.toString());
+        } else {
+            System.out.println("Item not found");
+        }
     }
     /**
      * Метод находит заявки по имени
@@ -122,8 +130,16 @@ public class StartUI {
     private void findItemsByName() {
         System.out.println("------------ Поиск заявки по имени------------ ");
         String name = this.input.ask("Введите имя заявки: ");
-        System.out.println(this.tracker.findByName(name));
+        Item[] items = tracker.findByName(name);
+        if (items.length > 0) {
+            for (Item item : items) {
+                System.out.println(item.toString());
+            }
+        } else {
+            System.out.println("Заявок с данным именем нет");
+        }
     }
+
     private void showMenu() {
         System.out.println( "Меню." );
         System.out.println( "0. Добавить новый элемент" );
