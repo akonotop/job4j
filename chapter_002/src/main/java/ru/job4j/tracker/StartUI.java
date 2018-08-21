@@ -13,8 +13,8 @@ public class StartUI {
      * Константа меню для добавления новой заявки.
      */
     private static final String ADD = "0";
-    private static final String EDIT = "1";
-    private static final String ALL = "2";
+    private static final String ALL = "1";
+    private static final String EDIT = "2";
     private static final String DELETE = "3";
     private static final String ID = "4";
     private static final String NAME = "5";
@@ -49,10 +49,10 @@ public class StartUI {
             String answer = this.input.ask("Введите пункт меню : ");
             if (ADD.equals(answer)) {
                 this.createItem();
-            } else if (EDIT.equals(answer)) {
-                this.editItems();
             } else if (ALL.equals(answer)) {
                 this.findAllItems();
+            } else if (EDIT.equals(answer)) {
+                this.editItems();
             } else if (DELETE.equals(answer)) {
                 this.deleteItems();
             } else if (ID.equals(answer)) {
@@ -143,8 +143,8 @@ public class StartUI {
     private void showMenu() {
         System.out.println( "Меню." );
         System.out.println( "0. Добавить новый элемент" );
-        System.out.println( "1. Редактировать элемент" );
-        System.out.println( "2. Показать все элементы" );
+        System.out.println( "1. Показать все элементы" );
+        System.out.println( "2. Редактировать элемент" );
         System.out.println( "3. Удалить элементы" );
         System.out.println( "4. Найти элемент по id" );
         System.out.println( "5. Поиск элемента по имени" );

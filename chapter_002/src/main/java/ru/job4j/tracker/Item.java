@@ -33,7 +33,11 @@ public class Item {
     }
 
     public String getDesc() {
-        return desc;
+        return this.desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
     }
 
     public void setId(String id) {
@@ -46,10 +50,5 @@ public class Item {
 
     public String getName() {
         return name;
-    }
-
-    public String getStringItem() {
-        String result =this.id + this.name + this.desc + this.created;
-        return result;
     }
 }
