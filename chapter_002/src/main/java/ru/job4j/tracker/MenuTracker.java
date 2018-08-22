@@ -20,7 +20,7 @@ public class MenuTracker {
     public ArrayList<Integer> getRange() {
         ArrayList<Integer> range = new ArrayList<>();
         for (int i = 0; i < actions.size(); i++) {
-            range.add(i);
+            range.add(actions.get(i).key());
         }
         return range;
     }
@@ -72,7 +72,7 @@ public class MenuTracker {
         }
         @Override
         public String info() {
-            return String.format("%s. %s", this.key(), "Add the new item");
+            return String.format("%s. %s", this.key(), name);
         }
     }
 
@@ -97,7 +97,7 @@ public class MenuTracker {
             }
         }
         public String info() {
-            return String.format("%s. %s", this.key(), "Список всех заявок");
+            return String.format("%s. %s", this.key(), name);
         }
     }
 
@@ -128,7 +128,7 @@ public class MenuTracker {
         }
 
         public String info() {
-            return String.format("%s. %s", this.key(), "Edit item");
+            return String.format("%s. %s", this.key(), name);
         }
     }
 
@@ -156,7 +156,7 @@ public class MenuTracker {
         }
 
         public String info() {
-            return String.format("%s. %s", this.key(), "Удаление заявки");
+            return String.format("%s. %s", this.key(), name);
         }
     }
 
@@ -185,7 +185,7 @@ public class MenuTracker {
         }
 
         public String info() {
-            return String.format("%s. %s", this.key(), "Поиск заявки по ID");
+            return String.format("%s. %s", this.key(), name);
         }
     }
 
@@ -216,7 +216,7 @@ public class MenuTracker {
         }
 
         public String info() {
-            return String.format("%s. %s", this.key(), "Поиск заявки по имени");
+            return String.format("%s. %s", this.key(), name);
         }
     }
     public class ExitProgram implements UserAction {
@@ -236,7 +236,7 @@ public class MenuTracker {
         }
 
         public String info() {
-            return String.format("%s. %s", this.key(),  "Выход из программы");
+            return String.format("%s. %s", this.key(), name);
         }
     }
 }
