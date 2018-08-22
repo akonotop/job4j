@@ -22,13 +22,13 @@ public class MenuTracker {
     }
 
     public void fillActions() {
-        this.actions.add(new AddItem(this.input, this.tracker));
-        this.actions.add(new ShowItems(this.input, this.tracker));
-        this.actions.add(new MenuTracker.EditItem(this.input, this.tracker));
-        this.actions.add(new MenuTracker.DeleteItem(this.input, this.tracker));
-        this.actions.add(new FindItemById(this.input, this.tracker));
-        this.actions.add(new FindItemsByName(this.input, this.tracker));
-        this.actions.add(new ExitProgram(this.input, this.tracker));
+        this.actions.add(new AddItem(0, "Add item"));
+        this.actions.add(new ShowItems(1, "Show all items"));
+        this.actions.add(new MenuTracker.EditItem(2, "Edit item"));
+        this.actions.add(new MenuTracker.DeleteItem(3, "Delete item"));
+        this.actions.add(new FindItemById(4, "Find item by Id"));
+        this.actions.add(new FindItemsByName(5, "Find items by name"));
+        this.actions.add(new ExitProgram(6, "Exit Program"));
     }
 
     public void select(int key) {
@@ -44,11 +44,16 @@ public class MenuTracker {
     }
 
     private class AddItem implements UserAction {
-        public AddItem(Input input, Tracker tracker) {
+        private int key;
+        private String name;
+
+        public AddItem(int key, String name) {
+            this.key = key;
+            this.name = name;
         }
         @Override
         public int key() {
-            return 0;
+            return key;
         }
         @Override
         public void execute(Input input, Tracker tracker) {
@@ -68,12 +73,16 @@ public class MenuTracker {
     }
 
     public class ShowItems implements UserAction {
+        private int key;
+        private String name;
 
-        public ShowItems(Input input, Tracker tracker) {
+        public ShowItems(int key, String name) {
+            this.key = key;
+            this.name = name;
         }
-
+        @Override
         public int key() {
-           return 1;
+            return key;
         }
 
         public void execute(Input input, Tracker tracker) {
@@ -89,12 +98,17 @@ public class MenuTracker {
     }
 
     public class EditItem implements UserAction {
+        private int key;
+        private String name;
 
-        public EditItem(Input input, Tracker tracker) {
+        public EditItem(int key, String name) {
+            this.key = key;
+            this.name = name;
         }
 
+        @Override
         public int key() {
-            return 2;
+            return key;
         }
 
         public void execute(Input input, Tracker tracker) {
@@ -115,11 +129,16 @@ public class MenuTracker {
     }
 
     public class DeleteItem implements UserAction {
-        public DeleteItem(Input input, Tracker tracker) {
-        }
+        private int key;
+        private String name;
 
+        public DeleteItem(int key, String name) {
+            this.key = key;
+            this.name = name;
+        }
+        @Override
         public int key() {
-            return 3;
+            return key;
         }
 
         public void execute(Input input, Tracker tracker) {
@@ -138,11 +157,16 @@ public class MenuTracker {
     }
 
     public class FindItemById implements UserAction {
-        public FindItemById(Input input, Tracker tracker) {
-        }
+        private int key;
+        private String name;
 
+        public FindItemById(int key, String name) {
+            this.key = key;
+            this.name = name;
+        }
+        @Override
         public int key() {
-            return 4;
+            return key;
         }
 
         public void execute(Input input, Tracker tracker) {
@@ -162,12 +186,16 @@ public class MenuTracker {
     }
 
     public class FindItemsByName implements UserAction {
+        private int key;
+        private String name;
 
-        public FindItemsByName(Input input, Tracker tracker) {
+        public FindItemsByName(int key, String name) {
+            this.key = key;
+            this.name = name;
         }
-
+        @Override
         public int key() {
-            return 4;
+            return key;
         }
 
         public void execute(Input input, Tracker tracker) {
@@ -188,12 +216,16 @@ public class MenuTracker {
         }
     }
     public class ExitProgram implements UserAction {
+        private int key;
+        private String name;
 
-        public ExitProgram(Input input, Tracker tracker) {
+        public ExitProgram(int key, String name) {
+            this.key = key;
+            this.name = name;
         }
-
+        @Override
         public int key() {
-           return 6;
+            return key;
         }
 
         public void execute(Input input, Tracker tracker) {
