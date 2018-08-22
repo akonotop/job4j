@@ -87,7 +87,7 @@ public class StartUITest {
                                 .append("Item{")
                                 .append("id=" + "'" +  item.getId() + "', ")
                                 .append("name=" + "'" + item.getName() + "', ")
-                                .append("desc=" + "'" + item.getDesc()+ "'}"))
+                                .append("desc=" + "'" + item.getDesc() + "'}"))
                                 .append(nl) + menu() + (new StringBuilder())
                 )
         );
