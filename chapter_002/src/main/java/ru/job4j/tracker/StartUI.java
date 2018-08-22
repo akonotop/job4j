@@ -11,9 +11,6 @@ import java.util.List;
  */
 
 public class StartUI {
-    /**
-     * Получение данных от пользователя.
-     */
     private final Input input;
 
     /**
@@ -32,26 +29,20 @@ public class StartUI {
         this.tracker = tracker;
     }
 
-    public void init() {
-        MenuTracker menu = new MenuTracker(this.input, this.tracker);
-        List<Integer> range = new ArrayList<>();
+    public void init() throws MenuOutException {
+        MenuTracker menu = new MenuTracker(this.input, tracker);
         menu.fillActions();
-        for (int i = 0; i < menu.getActionsLentgh(); i++) {
-            range.add(i);
-        }
-        String select;
         do {
             menu.show();
-            select = input.ask(":");
-            menu.select(Integer.parseInt(select));
-        } while (!"6".equals(select));
+            menu.select(input.ask("Введите пункт меню :", menu.getRange()));
+        } while (!"y".equals(this.input.ask("Exit?(y): ")));
     }
     /**
      * Запускт программы.
      * @param args
      */
-    public static void main(String[] args) {
-        new StartUI(new ConsoleInput(), new Tracker()).init();
+    public static void main(String[] args) throws MenuOutException {
+        new StartUI(new ValidateInput(), new Tracker()).init();
     }
 }
 

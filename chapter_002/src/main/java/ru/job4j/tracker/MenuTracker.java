@@ -17,8 +17,12 @@ public class MenuTracker {
         this.tracker = tracker;
     }
 
-    public int getActionsLentgh() {
-        return this.actions.size();
+    public ArrayList<Integer> getRange() {
+        ArrayList<Integer> range = new ArrayList<>();
+        for (int i = 0; i < actions.size(); i++) {
+            range.add(i);
+        }
+        return range;
     }
 
     public void fillActions() {

@@ -35,14 +35,14 @@ public class StartUITest {
     }
 
     @Test
-    public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
+    public void whenUserAddItemThenTrackerHasNewItemWithSameName() throws MenuOutException {
         Tracker tracker = new Tracker();     // создаём Tracker
         Input input = new StubInput(new String[]{"0", "test", "desc", "6"});   //создаём StubInput с последовательностью действий
         new StartUI(input, tracker).init();     //   создаём StartUI и вызываем метод init()
         assertThat(tracker.findAll()[0].getName(), is("test")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
     }
     @Test
-    public void whenUserEditItemThenTrackerShowEditItem() {
+    public void whenUserEditItemThenTrackerShowEditItem() throws MenuOutException {
         Tracker tracker = new Tracker();
         Item item = new Item("test name", "desc");
         tracker.add(item);
@@ -52,7 +52,7 @@ public class StartUITest {
     }
 
     @Test
-    public void whenUserDeleteItemThenTrackerDeleteItem() {
+    public void whenUserDeleteItemThenTrackerDeleteItem() throws MenuOutException {
         Tracker tracker = new Tracker();
         Item item = new Item("test name", "desc");
         tracker.add(item);
@@ -76,7 +76,7 @@ public class StartUITest {
                 .toString();
     }
     @Test
-    public void whenShowAll() {
+    public void whenShowAll() throws MenuOutException {
         String nl = System.lineSeparator();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("name1", "that's all", 45L));
@@ -93,7 +93,7 @@ public class StartUITest {
         );
     }
     @Test
-    public void whenFindByNameAllItemThenTrackerShowFindItems() {
+    public void whenFindByNameAllItemThenTrackerShowFindItems() throws MenuOutException {
         String nl = System.lineSeparator();
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc", 12L));
