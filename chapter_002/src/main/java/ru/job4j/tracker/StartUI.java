@@ -29,13 +29,20 @@ public class StartUI {
         this.tracker = tracker;
     }
 
+    private boolean working = true;
+
     public void init() throws MenuOutException {
         MenuTracker menu = new MenuTracker( this.input, tracker );
-        menu.fillActions();
+        menu.fillActions(this);
         do {
             menu.show();
             menu.select( input.ask( "Введите пункт меню :", menu.getRange() ) );
-        } while (!"y".equals( this.input.ask( "Exit?(y): " ) ));
+        } while (this.working);
+    }
+
+
+    public void stop() {
+        this.working = false;
     }
 
     /**

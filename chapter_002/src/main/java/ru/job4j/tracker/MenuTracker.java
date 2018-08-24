@@ -27,14 +27,14 @@ public class MenuTracker {
         return range;
     }
 
-    public void fillActions() {
+    public void fillActions(StartUI ui) {
         this.actions.add( new AddItem( 0, "Add item" ) );
         this.actions.add( new ShowItems( 1, "Show all items" ) );
         this.actions.add( new MenuTracker.EditItem( 2, "Edit item" ) );
         this.actions.add( new MenuTracker.DeleteItem( 3, "Delete item" ) );
         this.actions.add( new FindItemById( 4, "Find item by Id" ) );
         this.actions.add( new FindItemsByName( 5, "Find items by name" ) );
-        this.actions.add( new ExitProgram( 6, "Exit Program" ) );
+        this.actions.add( new ExitProgram( ui,6, "Exit Program" ) );
     }
 
     public void select(int key) {
@@ -158,12 +158,15 @@ public class MenuTracker {
     }
 
     public class ExitProgram extends BaseAction {
+        private final StartUI ui;
 
-        public ExitProgram(int key, String name) {
+        public ExitProgram(StartUI ui, int key, String name) {
             super( key, name );
+            this.ui = ui;
         }
 
         public void execute(Input input, Tracker tracker) {
+            this.ui.stop();
         }
     }
 }
