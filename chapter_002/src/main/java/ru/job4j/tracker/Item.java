@@ -1,4 +1,5 @@
 package ru.job4j.tracker;
+
 /**
  * @author Alex Konotop (mailto:a.konotop@gmail.com)
  * @version $Id$
@@ -16,21 +17,16 @@ public class Item {
         this.desc = desc;
         this.created = created;
     }
+
     public Item(String name, String desc) {
         this.name = name;
         this.desc = desc;
     }
 
 
-
     @Override
     public String toString() {
-        return "Item{"
-                + "id='"
-                + id + '\'' + ", name='"
-                + name + '\'' + ", desc='"
-                + desc + '\''
-                + '}';
+        return "Item{" + "id='" + id + '\'' + ", name='" + name + '\'' + ", desc='" + desc + '\'' + '}';
     }
 
     public String getDesc() {
