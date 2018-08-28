@@ -13,7 +13,8 @@ public class Logic3T {
         boolean vertical = false;
         boolean horizontal = false;
         for (int out = 0; out < table.length; out++) {
-            vertical = true; horizontal = true;
+            vertical = true;
+            horizontal = true;
             right = right && table[out][table.length - 1 - out].hasMarkX();
             left = left && table[out][out].hasMarkX();
             for (int in = 0; in < table[0].length; in++) {
@@ -33,7 +34,8 @@ public class Logic3T {
         boolean vertical = false;
         boolean horizontal = false;
         for (int out = 0; out < table.length; out++) {
-            vertical = true; horizontal = true;
+            vertical = true;
+            horizontal = true;
             right = right && table[out][table.length - 1 - out].hasMarkO();
             left = left && table[out][out].hasMarkO();
             for (int in = 0; in < table[0].length; in++) {

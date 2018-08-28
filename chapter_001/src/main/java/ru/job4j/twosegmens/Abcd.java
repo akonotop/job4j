@@ -10,14 +10,14 @@ package ru.job4j.twosegmens;
 
 public class Abcd {
     public boolean abcd(int a, int b, int c, int d) {
-    boolean result = true;
+        boolean result = true;
 
-    if (b < c) {
-        return false;
-    }
-    if (d < a){
-        return false;
-    }
-    return true;
+        if (b < c) {
+            return false;
+        }
+        if (d < a) {
+            return false;
+        }
+        return true;
     }
 }

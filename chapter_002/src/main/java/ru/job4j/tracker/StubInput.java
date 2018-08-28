@@ -15,13 +15,15 @@ public class StubInput implements Input {
     public StubInput(String[] answers) {
         this.answers = answers;
     }
+
     public String ask(String question) {
         return answers[position++];
     }
+
     public int ask(String question, List<Integer> range) throws MenuOutException {
         int key = Integer.valueOf(this.ask(question));
         boolean exist = false;
-        for (int value: range) {
+        for (int value : range) {
             if (value == key) {
                 exist = true;
                 break;

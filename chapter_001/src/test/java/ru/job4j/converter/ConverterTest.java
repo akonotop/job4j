@@ -1,6 +1,7 @@
 package ru.job4j.converter;
 
 import org.junit.Test;
+
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
@@ -18,12 +19,14 @@ public class ConverterTest {
         int result = converter.rubleToEuro(70);
         assertThat(result, is(1));
     }
+
     @Test
     public void when1EuroToRubleThen65() {
         Converter converter = new Converter();
         int result = converter.rubleToEuro(1);
         assertThat(result, is(65));
     }
+
     @Test
     public void when1DollarToRubleThen55() {
         Converter converter = new Converter();

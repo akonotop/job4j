@@ -1,4 +1,5 @@
 package ru.job4j.condition;
+
 public class Triangle {
     private Point a;
     private Point b;
@@ -46,7 +47,7 @@ public class Triangle {
 
     /**
      * Метод проверяет можно ли построить треугольник с такими длинами сторон.
-     *
+     * <p>
      * Подумайте какое надо написать условие, чтобы определить можно ли построить треугольник.
      *
      * @param ab Длина от точки a b.

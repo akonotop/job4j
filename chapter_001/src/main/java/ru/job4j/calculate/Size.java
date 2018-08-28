@@ -5,6 +5,7 @@ public class Size {
         int result = left + right;
         return result;
     }
+
     public void info(int size) {
         System.out.println("Your size is: " + size);
     }

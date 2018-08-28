@@ -25,25 +25,25 @@ public class PaintTest {
 
     @Before
     public void loadOutput() {
-        System.out.println( "execute before method" );
-        System.setOut( new PrintStream( this.out ) );
+        System.out.println("execute before method");
+        System.setOut(new PrintStream(this.out));
     }
 
     @After
     public void backOutput() {
-        System.setOut( this.stdout );
-        System.out.println( "execute after method" );
+        System.setOut(this.stdout);
+        System.out.println("execute after method");
     }
 
     @Test
     public void whenDrawSquare() {
-        new Paint().draw( new Square() );
-        assertThat( new String( this.out.toByteArray() ), is( new StringBuilder().append( "++++" ).append( "+     +" ).append( "+     +" ).append( "++++" ).append( System.lineSeparator() ).toString() ) );
+        new Paint().draw(new Square());
+        assertThat(new String(this.out.toByteArray()), is(new StringBuilder().append("++++").append("+     +").append("+     +").append("++++").append(System.lineSeparator()).toString()));
     }
 
     @Test
     public void whenDrawTriangle() {
-        new Paint().draw( new Triangle() );
-        assertThat( new String( this.out.toByteArray() ), is( new StringBuilder().append( "   *   " ).append( "  *** " ).append( " ***** " ).append( "*******" ).append( System.lineSeparator() ).toString() ) );
+        new Paint().draw(new Triangle());
+        assertThat(new String(this.out.toByteArray()), is(new StringBuilder().append("   *   ").append("  *** ").append(" ***** ").append("*******").append(System.lineSeparator()).toString()));
     }
 }

@@ -32,11 +32,11 @@ public class StartUI {
     private boolean working = true;
 
     public void init() throws MenuOutException {
-        MenuTracker menu = new MenuTracker( this.input, tracker );
+        MenuTracker menu = new MenuTracker(this.input, tracker);
         menu.fillActions(this);
         do {
             menu.show();
-            menu.select( input.ask( "Введите пункт меню :", menu.getRange() ) );
+            menu.select(input.ask("Введите пункт меню :", menu.getRange()));
         } while (this.working);
     }
 
@@ -51,7 +51,7 @@ public class StartUI {
      * @param args
      */
     public static void main(String[] args) throws MenuOutException {
-        new StartUI( new ValidateInput( new ConsoleInput() ), new Tracker() ).init();
+        new StartUI(new ValidateInput(new ConsoleInput()), new Tracker()).init();
     }
 }
 

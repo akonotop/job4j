@@ -15,7 +15,7 @@ public class Board {
                 // условие проверки, что писать пробел или X
                 // Выше в задании мы определили закономерность, когда нужно проставлять X
                 int sum = i + j;
-                if (sum  % 2 == 0) {
+                if (sum % 2 == 0) {
                     screen.append("X");
                 } else {
                     screen.append(" ");
