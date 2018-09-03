@@ -28,7 +28,7 @@ public class PawnBlack implements Figure {
         if (source.y == dest.y + 1 && source.x == dest.x) {
             steps = new Cell[] {dest };
         } else {
-            throw new ImpossibleMoveException();
+            throw new ImpossibleMoveException("Так ходить нельзя.");
         }
         return steps;
     }

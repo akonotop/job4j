@@ -25,7 +25,7 @@ public class BishopWhite implements Figure {
     @Override
     public Cell[] way(Cell source, Cell dest) throws ImpossibleMoveException {
         if (Math.abs(dest.y - source.y) != Math.abs(dest.x - source.x)) {
-            throw new ImpossibleMoveException();
+            throw new ImpossibleMoveException("Так ходить нельзя.");
         }
         int numSteps = Math.abs(dest.y - source.y);
         Cell[] steps = new Cell[numSteps];
