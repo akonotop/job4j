@@ -23,33 +23,14 @@ public enum Cell {
      * @param y внутренняя координата y
      * @return Cell
      */
-    public static Cell valueOf(int x, int y) {
-        String name;
-        switch (x) {
-            case 0:
-                name = "A%d";
+    public static Cell getCellByXY(int x, int y) {
+        Cell cell = null;
+        for (Cell value : values()) {
+            if (value.x == x && value.y == y) {
+                cell = value;
                 break;
-            case 1:
-                name = "B%d";
-                break;
-            case 2:
-                name = "C%d";
-                break;
-            case 3:
-                name = "D%d";
-                break;
-            case 4:
-                name = "E%d";
-                break;
-            case 5:
-                name = "F%d";
-                break;
-            case 6:
-                name = "G%d";
-                break;
-            default:
-                name = "H%d";
+            }
         }
-        return Cell.valueOf(String.format(name, y + 1));
+        return cell;
     }
 }
