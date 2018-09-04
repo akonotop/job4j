@@ -4,6 +4,8 @@ import ru.job4j.chess.ImpossibleMoveException;
 import ru.job4j.chess.firuges.Cell;
 import ru.job4j.chess.firuges.Figure;
 
+import static java.lang.Math.abs;
+
 /**
  *
  * @author Petr Arsentev (parsentev@yandex.ru)
@@ -24,19 +26,20 @@ public class BishopWhite implements Figure {
 
     @Override
     public Cell[] way(Cell source, Cell dest) throws ImpossibleMoveException {
-        if (Math.abs(dest.y - source.y) != Math.abs(dest.x - source.x)) {
-            throw new ImpossibleMoveException("Так ходить нельзя.");
+        if (abs((source.x - dest.x)) != abs((source.y - dest.y))) {
+            throw new ImpossibleMoveException("Эта фигура не может так ходить.");
         }
-        int numSteps = Math.abs(dest.y - source.y);
-        Cell[] steps = new Cell[numSteps];
-        int x = source.x;
-        int y = source.y;
-        int dy = dest.y > source.y ? 1 : -1;
-        int dx = dest.x > source.x ? 1 : -1;
-        for (int i = 0; i < numSteps; i++) {
-            x += dx;
-            y += dy;
-            steps[i] = Cell.valueOf(x, y);
+        Cell[] steps = new Cell[abs(source.x - dest.x)];
+        int indexX = dest.x;
+        int indexY = dest.y;
+        int index = 0;
+        int deltaX = Integer.compare(source.x, dest.x);
+        int deltaY = Integer.compare(source.y, dest.y);
+        while (indexX != source.x) {
+            steps[index] = Cell.getCellByXY(indexX, indexY);
+            indexX += deltaX;
+            indexY += deltaY;
+            index++;
         }
         return steps;
     }
