@@ -18,11 +18,6 @@ public class ConvertList2Array {
                 cell++;
             }
         }
-        if (list.size() / rows != cells) {
-            for (int i = list.size(); i < cells; i++) {
-                array [row][i] = 0;
-            }
-        }
         return array;
     }
 }
