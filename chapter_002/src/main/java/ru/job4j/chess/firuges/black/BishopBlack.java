@@ -7,7 +7,6 @@ import ru.job4j.chess.firuges.Figure;
 import static java.lang.Math.abs;
 
 /**
- *
  * @author Petr Arsentev (parsentev@yandex.ru)
  * @version $Id$
  * @since 0.1
