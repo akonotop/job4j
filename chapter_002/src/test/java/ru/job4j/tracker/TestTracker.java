@@ -4,6 +4,8 @@ import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
 import org.junit.Test;
 
+import java.util.List;
+
 /**
  * @author Alex Konotop (mailto:a.konotop@gmail.com)
  * @version $Id$
@@ -16,7 +18,7 @@ public class TestTracker {
         Tracker tracker = new Tracker();
         Item item = new Item("test1", "testDescription", 123L);
         tracker.add(item);
-        assertThat(tracker.findAll()[0], is(item));
+        assertThat(tracker.findAll().get(0), is(item));
     }
     @Test
     public void whenReplaceNameThenReturnNewName() {
@@ -43,9 +45,9 @@ public class TestTracker {
         Item item2 = new Item("test2", "testDescription2", 12345L);
         tracker.add(item2);
         tracker.delete(item1.getId());
-        Item[] result = tracker.findAll();
-        Item[] expect = {item, item2};
-        assertThat(result, is(expect));
+        List<Item> items = tracker.findAll();
+        assertThat(items.get(0).getName(), is("test"));
+        assertThat(items.get(1).getName(), is("test2"));
     }
 
     @Test
@@ -60,8 +62,10 @@ public class TestTracker {
         tracker.add(item3);
         tracker.add(item4);
         tracker.delete(item1.getId());
-        Item[] testitems = new Item[]{item2, item3, item4};
-        assertThat(tracker.findAll(), is(testitems));
+        List<Item> items = tracker.findAll();
+        assertThat(items.get(0).getName(), is("test2"));
+        assertThat(items.get(1).getName(), is("test3"));
+        assertThat(items.get(2).getName(), is("test4"));
     }
     @Test
     public void whenFindItemByName() {
@@ -75,11 +79,9 @@ public class TestTracker {
         tracker.add(second);
         tracker.add(third);
         //create array with expections
-        Item[] expect = new Item[2];
-        expect[0] = first;
-        expect[1] = third;
-        Item[] actual = tracker.findByName(first.getName());
-        assertThat(actual, is(expect));
-
+        List<Item> items = tracker.findByName("name");
+        assertThat(items.size(), is(2));
+        assertThat(items.get(0).getName(), is("name"));
+        assertThat(items.get(1).getName(), is("name"));
     }
 }

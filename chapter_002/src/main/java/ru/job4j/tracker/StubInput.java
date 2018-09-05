@@ -1,5 +1,6 @@
 package ru.job4j.tracker;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -9,15 +10,16 @@ import java.util.List;
  */
 
 public class StubInput implements Input {
-    private String[] answers;
+
+    private List<String> answers;
     private int position = 0;
 
     public StubInput(String[] answers) {
-        this.answers = answers;
+        this.answers = Arrays.asList(answers);
     }
 
     public String ask(String question) {
-        return answers[position++];
+        return answers.get(position++);
     }
 
     public int ask(String question, List<Integer> range) throws MenuOutException {

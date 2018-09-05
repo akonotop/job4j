@@ -39,8 +39,8 @@ public class StartUITest {
         Tracker tracker = new Tracker();     // создаём Tracker
         Input input = new StubInput(new String[]{"0", "test", "desc", "6"});   //создаём StubInput с последовательностью действий
         new StartUI(input, tracker).init();     //   создаём StartUI и вызываем метод init()
-        assertThat(tracker.findAll()[0].getName(), is("test")); // проверяем, что нулевой элемент массива в трекере содержит имя, введённое при эмуляции.
-    }
+        assertThat(tracker.findAll().get(0).getName(), is("test"));    }
+
     @Test
     public void whenUserEditItemThenTrackerShowEditItem() throws MenuOutException {
         Tracker tracker = new Tracker();
@@ -60,19 +60,19 @@ public class StartUITest {
         tracker.add(item2);
         Input input = new StubInput(new String[]{"3", item.getId(), "6"});
         new StartUI(input, tracker).init();
-        assertThat(tracker.findAll()[0].getName(), is("test name2"));
+        assertThat(tracker.findIndexById(item.getId()), is(-1));
+        assertThat(tracker.findIndexById(item2.getId()), is(0));
     }
     public String menu() {
         String nl = System.lineSeparator();
         return new StringBuilder()
-                .append("Меню.").append(nl)
-                .append("0. Добавить новый элемент").append(nl)
-                .append("1. Показать все элементы").append(nl)
-                .append("2. Редактировать элемент").append(nl)
-                .append("3. Удалить элементы").append(nl)
-                .append("4. Найти элемент по id").append(nl)
-                .append("5. Поиск элемента по имени").append(nl)
-                .append("6. Выйти из программы").append(nl)
+                .append("0 : Add item").append(nl)
+                .append("1 : Show all items").append(nl)
+                .append("2 : Edit item").append(nl)
+                .append("3 : Delete item").append(nl)
+                .append("4 : Find item by Id").append(nl)
+                .append("5 : Find items by name").append(nl)
+                .append("6 : Exit Program").append(nl)
                 .toString();
     }
     @Test
@@ -83,7 +83,6 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"1", "6"});
         new StartUI(input, tracker).init();
         assertThat(new String(this.out.toByteArray()), is(menu() + (new StringBuilder()
-                                .append("------------ Список всех заявок------------ ").append(nl)
                                 .append("Item{")
                                 .append("id=" + "'" +  item.getId() + "', ")
                                 .append("name=" + "'" + item.getName() + "', ")
@@ -105,7 +104,6 @@ public class StartUITest {
         Input input = new StubInput(new String[]{"5", "test name2", "6"});
         new StartUI(input, tracker).init();
         assertThat(new String(this.out.toByteArray()), is(menu() + (new StringBuilder()
-                                .append("------------ Поиск заявки по имени------------ ").append(nl)
                                 .append("Item{")
                                 .append("id='457', name='test name2', desc='desc2" + "'}"))
                                 .append(nl) + menu() + (new StringBuilder())
