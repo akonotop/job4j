@@ -1,5 +1,11 @@
 package user;
 
+/**
+ * @author Alex Konotop (mailto:a.konotop@gmail.com)
+ * @version $Id$
+ * @since 0.1
+ */
+
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
