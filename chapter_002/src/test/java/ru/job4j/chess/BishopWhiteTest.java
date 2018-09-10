@@ -22,6 +22,16 @@ public class BishopWhiteTest {
         assertThat(logic.findBy(Cell.C1), is(0));
         assertThat(logic.findBy(Cell.F1), is(-1));
     }
+
+    @Test
+    public void whenBishopWhiteMoveCorrect() throws FigureNotFoundException, ImpossibleMoveException {
+        Logic logic = new Logic();
+        logic.add(new BishopWhite(Cell.C1));
+        logic.move(Cell.C1, Cell.A3);
+        assertThat(logic.findBy(Cell.C1), is(-1));
+        assertThat(logic.findBy(Cell.A3), is(0));
+    }
+
     @Test
     public void whenBishopBlackMoveUncorrect() throws FigureNotFoundException, ImpossibleMoveException {
         thrown.expect(ImpossibleMoveException.class);

@@ -10,6 +10,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class SortUserTest {
+
     @Test
     public void whenListOfThreeUsersByAge() {
         SortUser sortUser = new SortUser();
@@ -19,9 +20,9 @@ public class SortUserTest {
         List<User> input = Arrays.asList(user1, user2, user3);
         Set<User> result = sortUser.sort(input);
         Iterator<User> iterator = result.iterator();
-        assertThat(iterator.next().getName(), is("Rakso"));
-        assertThat(iterator.next().getName(), is("Ivan"));
-        assertThat(iterator.next().getName(), is("Alex"));
+        assertThat(iterator.next(), is(user3));
+        assertThat(iterator.next(), is(user2));
+        assertThat(iterator.next(), is(user1));
     }
 }
 
