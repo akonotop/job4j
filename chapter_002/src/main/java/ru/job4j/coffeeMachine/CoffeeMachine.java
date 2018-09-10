@@ -1,4 +1,4 @@
-package ru.job4j.coffeeMachine;
+package ru.job4j.coffeemachine;
 
 import java.util.ArrayList;
 
@@ -7,8 +7,8 @@ public class CoffeeMachine {
         int[] coins = {10, 5, 2, 1};
         int change = value - price;
         ArrayList<Integer> changes = new ArrayList<>();
-        for (int coin : coins ) {
-            while(change >= coin) {
+        for (int coin : coins) {
+            while (change >= coin) {
                 change = change - coin;
                 changes.add(coin);
             }

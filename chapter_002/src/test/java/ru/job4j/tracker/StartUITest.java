@@ -36,14 +36,14 @@ public class StartUITest {
 
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() throws MenuOutException {
-        Tracker tracker = new Tracker();     // создаём Tracker
+        final Tracker tracker = new Tracker();     // создаём Tracker
         Input input = new StubInput(new String[]{"0", "test", "desc", "6"});   //создаём StubInput с последовательностью действий
         new StartUI(input, tracker).init();     //   создаём StartUI и вызываем метод init()
         assertThat(tracker.findAll().get(0).getName(), is("test"));    }
 
     @Test
     public void whenUserEditItemThenTrackerShowEditItem() throws MenuOutException {
-        Tracker tracker = new Tracker();
+        final Tracker tracker = new Tracker();
         Item item = new Item("test name", "desc");
         tracker.add(item);
         Input input = new StubInput(new String[]{"2", item.getId(), "test name2", "desc2", "6"});
@@ -53,7 +53,7 @@ public class StartUITest {
 
     @Test
     public void whenUserDeleteItemThenTrackerDeleteItem() throws MenuOutException {
-        Tracker tracker = new Tracker();
+        final Tracker tracker = new Tracker();
         Item item = new Item("test name", "desc");
         tracker.add(item);
         Item item2 = new Item("test name2", "desc2");
@@ -78,7 +78,7 @@ public class StartUITest {
     @Test
     public void whenShowAll() throws MenuOutException {
         String nl = System.lineSeparator();
-        Tracker tracker = new Tracker();
+        final Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("name1", "that's all", 45L));
         Input input = new StubInput(new String[]{"1", "6"});
         new StartUI(input, tracker).init();
@@ -94,7 +94,7 @@ public class StartUITest {
     @Test
     public void whenFindByNameAllItemThenTrackerShowFindItems() throws MenuOutException {
         String nl = System.lineSeparator();
-        Tracker tracker = new Tracker();
+        final Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc", 12L));
         item.setId("123");
         Item item2 = tracker.add(new Item("test name2", "desc2", 112L));

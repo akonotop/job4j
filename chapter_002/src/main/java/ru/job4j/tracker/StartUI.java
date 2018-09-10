@@ -1,9 +1,5 @@
 package ru.job4j.tracker;
 
-import java.sql.SQLOutput;
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @author Alex Konotop (mailto:a.konotop@gmail.com)
  * @version $Id$
