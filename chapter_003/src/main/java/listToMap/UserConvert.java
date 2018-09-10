@@ -1,4 +1,4 @@
-package listToMap;
+package listtomap;
 
 import java.util.HashMap;
 import java.util.List;

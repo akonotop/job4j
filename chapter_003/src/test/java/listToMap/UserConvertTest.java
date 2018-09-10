@@ -1,4 +1,4 @@
-package listToMap;
+package listtomap;
 
 import org.junit.Test;
 

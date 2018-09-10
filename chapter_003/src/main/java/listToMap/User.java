@@ -1,4 +1,4 @@
-package listToMap;
+package listtomap;
 
 public class User {
     private int id;
